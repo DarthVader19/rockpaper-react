@@ -1,7 +1,7 @@
 import React from "react";
 
 const Score = (props) => {
-    const {status_,player,score,reset}=props;
+    const {status_,reset}=props;
     // const [bot,user]=player;
     
     

@@ -55,13 +55,13 @@ console.log(bot, user,this.state.score);
 let score=this.state.score;
   
 
-if(bot==user)
+if(bot===user)
         {this.setState({status_:'DRAW!!!'})}
         else 
-        {   if(bot==2&&user==0)
+        {   if(bot===2&&user===0)
             { this.setState({score:score++,status_:'YOU WON !!!'})
              }
-             else if(bot==0&&user==2)
+             else if(bot===0&&user===2)
                { this.setState({score:score--,status_:'BOT WON'})}
              else if(user>bot)
             { this.setState({score:score++,status_:'YOU WON !!!'});
@@ -106,7 +106,7 @@ onpasschange=(e)=>{
   this.setState({pass:pass})
 }
 onRoute=()=>{
-  if(this.state.email==this.state.users[0].name&&this.state.pass==this.state.users[0].pass)
+  if(this.state.email===this.state.users[0].name&&this.state.pass===this.state.users[0].pass)
 
      this.setState({isSignedIn:true})
   
