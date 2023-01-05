@@ -92,7 +92,7 @@ if(bot===user)
     // console.log("user = ",btn);
     if(this.state.version && btn==='scissor')
     {  
-         this.setState({userImgSrc:`./images/thescissor.png`})
+         this.setState({userImgSrc:`./images/vimg/scissor.png`})
      }
     else{
     this.setState({userImgSrc:`./images/${btn}.png`})
