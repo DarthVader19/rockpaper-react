@@ -8,7 +8,7 @@ const Score = (props) => {
   return (
         <div>
            <div>
-           <span className='b green br3  ma4 badge'>{status_}</span>
+           <span className='text-sucess green br3  ma3 color-green  badge'>{status_}</span>
            {/* <button type="button" className="btn btn-primary">
            {"Score"}<span className="badge badge-light">{score}</span>
          </button> */}

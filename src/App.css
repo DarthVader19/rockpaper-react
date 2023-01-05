@@ -2,9 +2,14 @@
   text-align: center;
  background-image: "./images/bgi.jpg";
 }
+.color-green{
+  color: green;
+  font-weight: bold;
+  font-size: large;
+}
 .bg{
   background: rgb(32, 26, 140);
-  background: linear-gradient(90deg, rgb(27, 52, 75) 0%, rgba(9,9,121,1) 29%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(90deg, rgb(27, 52, 75) 0%, rgb(46, 46, 149) 29%, rgb(15, 108, 127) 100%);
 }
 
 .App-logo {

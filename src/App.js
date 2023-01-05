@@ -5,6 +5,7 @@ import ImageCard from './components/imagecard';
 import ButtonConsole from './components/buttons';
 // import Navbar from './components/navbar';
 import Signin from './components/signin';
+import SignUp from './components/signup';
 // import Footer from './components/footer';
 // import ImageWithTitle from './components/imagedisplay';
 // import RockPaperScissors from './components/new';
@@ -27,6 +28,7 @@ class App extends React.Component{
       isSignedIn:false,
       email:'',
       pass:'',
+      route:'signin',
       users:[
         {name:'harry',
          pass:'potter' ,
@@ -90,9 +92,9 @@ if(bot===user)
   changeImg=(e)=>{
     const btn=e.target.innerHTML.toLowerCase();
     // console.log("user = ",btn);
-    if(this.state.version && btn==='scissor')
+    if(this.state.version )
     {  
-         this.setState({userImgSrc:`./images/vimg/scissor.png`})
+         this.setState({userImgSrc:`./images/vimg/${btn}.png`})
      }
     else{
     this.setState({userImgSrc:`./images/${btn}.png`})
@@ -149,6 +151,18 @@ onRoute=()=>{
     }
   
 }
+router=(route)=>{
+  this.setState({route:route})
+}
+
+signUpForm=()=>{
+  console.log('signup');
+  this.setState({route:'signup'})
+  
+  
+}
+
+
 
 signin=()=>{
   
@@ -171,8 +185,11 @@ signin=()=>{
     )
   }
   else{
-    return(
-      <Signin error={this.errormsg} onpasschange={this.onpasschange}onemailchange={this.onemailchange} onRoute={this.onRoute}/>
+    return(<div>
+      {(this.state.route==='signin'&&
+      <Signin error={this.errormsg} onpasschange={this.onpasschange}onemailchange={this.onemailchange} onRoute={this.onRoute} signUpForm={this.signUpForm}/>)||
+      (this.state.route==='signup'&&<SignUp router={this.router}/>)}
+    </div>
     )
   }
 }

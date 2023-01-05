@@ -3,7 +3,7 @@ import React from 'react';
 
 function Signin({onRoute,onemailchange,onpasschange,error,signUpForm}){
     return (
-        <article className="bg br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+        <article className="bg br4 dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
         <form className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -28,8 +28,7 @@ function Signin({onRoute,onemailchange,onpasschange,error,signUpForm}){
             onClick={onRoute}
             className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
           </div>
-          {{error}&&console.log(error)
-          }
+          
           <div className="lh-copy mt3">
             <a href="#0" onClick={signUpForm} className="f6 link dim black db">Sign up</a>
             <a href="#0" className="f6 link dim black db">Forgot your password?</a>
