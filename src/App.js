@@ -22,14 +22,18 @@ class App extends React.Component{
       botImgSrc:'./images/bot.jpg',
       userImgSrc:'./images/logo.png',
       status_:'PLAY',
-      isSignedIn:true,
+      isSignedIn:false,
       email:'',
       pass:'',
       users:[
         {name:'harry',
          pass:'potter'        },
-         {name:'ron',
-         pass:'123'        }
+         {name:'ashu',
+         pass:'ashu'        },
+         {
+          name:"darth",
+          pass:"vader"
+         }
       ]
     }
   }
