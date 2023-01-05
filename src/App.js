@@ -27,9 +27,11 @@ class App extends React.Component{
       pass:'',
       users:[
         {name:'harry',
-         pass:'potter'        },
+         pass:'potter' ,
+        email:'harry@1.com'       },
          {name:'ashu',
-         pass:'ashu'        },
+         pass:'ashu',
+        email:'ashu@1.com'        },
          {
           name:"darth",
           pass:"vader"
@@ -110,7 +112,7 @@ onpasschange=(e)=>{
   this.setState({pass:pass})
 }
 onRoute=()=>{
-  if(this.state.email===this.state.users[0].name&&this.state.pass===this.state.users[0].pass)
+  if(this.state.email===this.state.users[1].email&&this.state.pass===this.state.users[1].pass)
 
      this.setState({isSignedIn:true})
   
