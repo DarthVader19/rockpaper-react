@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-function Signin({onRoute,onemailchange,onpasschange}){
+function Signin({onRoute,onemailchange,onpasschange,error,signUpForm}){
     return (
-        <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+        <article className="bg br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
         <form className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -12,12 +12,14 @@ function Signin({onRoute,onemailchange,onpasschange}){
               <label 
               className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
               <input onChange={onemailchange}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address" />
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"
+              placeholder="use 'darth@vader.com'" />
             </div>
             <div className="mv3">
               <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
               <input onChange={onpasschange}
-               className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
+               className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" 
+               placeholder="use 'vader'"/>
             </div>
             <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" /> Remember me</label >
           </fieldset>
@@ -26,8 +28,10 @@ function Signin({onRoute,onemailchange,onpasschange}){
             onClick={onRoute}
             className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
           </div>
+          {{error}&&console.log(error)
+          }
           <div className="lh-copy mt3">
-            <a href="#0" className="f6 link dim black db">Sign up</a>
+            <a href="#0" onClick={signUpForm} className="f6 link dim black db">Sign up</a>
             <a href="#0" className="f6 link dim black db">Forgot your password?</a>
           </div>
         </form>

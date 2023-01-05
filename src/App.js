@@ -5,6 +5,7 @@ import ImageCard from './components/imagecard';
 import ButtonConsole from './components/buttons';
 // import Navbar from './components/navbar';
 import Signin from './components/signin';
+// import Footer from './components/footer';
 // import ImageWithTitle from './components/imagedisplay';
 // import RockPaperScissors from './components/new';
 
@@ -18,6 +19,7 @@ class App extends React.Component{
     super();
     this.state={
       player:['bot','your choice'],
+      version:false,
       score:0,
       botImgSrc:'./images/bot.jpg',
       userImgSrc:'./images/logo.png',
@@ -34,7 +36,8 @@ class App extends React.Component{
         email:'ashu@1.com'        },
          {
           name:"darth",
-          pass:"vader"
+          pass:"vader" ,
+          email:'darth@vader.com'    
          }
       ]
     }
@@ -42,9 +45,11 @@ class App extends React.Component{
   randNo=()=>{
     return (2*Math.random()).toFixed()
   }
-  botimg=()=>{
+  botimg=(version)=>{
     const images={0:'rock',1:'paper',2:'scissor'};
-    let bot=images[this.randNo()]
+    const vimg={0:'/vimg/rock',1:'/vimg/paper',2:'/vimg/scissor'};
+
+    let bot=version?vimg[this.randNo()]:images[this.randNo()]
     // console.log('bot', bot);
     this.setState({botImgSrc:`./images/${bot}.png`})
     return bot
@@ -85,9 +90,15 @@ if(bot===user)
   changeImg=(e)=>{
     const btn=e.target.innerHTML.toLowerCase();
     // console.log("user = ",btn);
+    if(this.state.version && btn==='scissor')
+    {  
+         this.setState({userImgSrc:`./images/thescissor.png`})
+     }
+    else{
     this.setState({userImgSrc:`./images/${btn}.png`})
-    let botinput =this.botimg()
-    this.setState({player:[botinput,btn]})
+    }
+    let botinput =this.botimg(this.state.version)
+    
 
     
     this.compare([btn,botinput])
@@ -111,10 +122,31 @@ onpasschange=(e)=>{
   const pass=e.target.value;
   this.setState({pass:pass})
 }
+errormsg=()=>{
+  return (
+    <p>Wrong</p>
+  );
+}
 onRoute=()=>{
-  if(this.state.email===this.state.users[1].email&&this.state.pass===this.state.users[1].pass)
+  if(this.state.email===this.state.users[2].email&&this.state.pass===this.state.users[2].pass)
+     {
+      this.setState({isSignedIn:true})
+      console.log();
+      this.setState({player:this.state.users[2].name})
+      
+     }
+  if (this.state.email===this.state.users[1].email&&this.state.pass===this.state.users[1].pass)
+    {
+      this.setState({version:true})
+      this.setState({isSignedIn:true})
+      this.setState({player:this.state.users[1].name})
+    }
 
-     this.setState({isSignedIn:true})
+  else{
+      return (
+        <Signin error={this.errormsg}/>
+      )
+    }
   
 }
 
@@ -132,6 +164,7 @@ signin=()=>{
       {/* <ImageWithTitle title='this is image1' imageUrl='https://picsum.photos/200'/> */}
       
       <ButtonConsole changeImg={this.changeImg}/>
+      
         
     </div>
 
@@ -139,7 +172,7 @@ signin=()=>{
   }
   else{
     return(
-      <Signin onpasschange={this.onpasschange}onemailchange={this.onemailchange} onRoute={this.onRoute}/>
+      <Signin error={this.errormsg} onpasschange={this.onpasschange}onemailchange={this.onemailchange} onRoute={this.onRoute}/>
     )
   }
 }
